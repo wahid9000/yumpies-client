@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useParams } from 'react-router-dom';
 import SingleChefsRecipe from '../../components/SingleChefsRecipe';
+import SingleChefInfo from '../../components/SingleChefInfo';
 
 const ChefsRecipe = () => {
     const recipes = useLoaderData();
-    const [chefInfo, setChefInfo] = useState([]);
-    useEffect( () => {
-        fetch('http://localhost:5000/chefs')
-        .then(res => res.json())
-        .then(data => setChefInfo(data))
-    }, [])
 
     return (
         <div>
@@ -22,6 +17,7 @@ const ChefsRecipe = () => {
                     
                     ></SingleChefsRecipe>)
                 }
+                
             </div>
         </div>
     );

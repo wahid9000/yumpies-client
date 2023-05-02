@@ -28,7 +28,7 @@ const ChefsCards = ({ chef }) => {
                     </div>
 
                     <div className="card-actions justify-center mt-5">
-                        <Link to={`/chefs/${id}`}><button className="btn btn-warning rounded-md">View Recipes</button></Link>
+                        <Link to={`/recipes/${id}`}><button className="btn btn-warning rounded-md">View Recipes</button></Link>
                     </div>
                 </div>
             </div>
