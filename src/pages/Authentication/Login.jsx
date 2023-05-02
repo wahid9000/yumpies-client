@@ -5,7 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
 
 const Login = () => {
-    const {loginUser} = useContext(AuthContext);
+    const { loginUser, createUserWithGoogle, createUserWithGithub } = useContext(AuthContext);
 
 
     const navigate = useNavigate()
@@ -17,7 +17,7 @@ const Login = () => {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
 
-    const handleLogin = (event) => { 
+    const handleLogin = (event) => {
         event.preventDefault();
         setSuccess("");
         setError("");
@@ -26,18 +26,44 @@ const Login = () => {
         console.log(email, password);
 
         loginUser(email, password)
-        .then(result => {
-            const loggedUser = result.user;
-            setSuccess("User has been loggedIn");
-            console.log(loggedUser);
-            navigate(from, {replace: true});
-     
-        })
-        .catch(error => {
-            console.log(error);
-            setError("Invalid Email or Password");
-        })
+            .then(result => {
+                const loggedUser = result.user;
+                setSuccess("User has been loggedIn");
+                console.log(loggedUser);
+                navigate(from, { replace: true });
+
+            })
+            .catch(error => {
+                console.log(error);
+                setError("Invalid Email or Password");
+            })
     }
+
+    const handleGoogleSignIn = () => {
+        createUserWithGoogle()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate(from, { replace: true });
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+    const handleGithubSignIn = () => {
+        createUserWithGithub()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate(from, { replace: true });
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+
 
 
     return (
@@ -45,7 +71,7 @@ const Login = () => {
 
             <div className="w-full lg:w-1/2 px-4 py-8 bg-white">
                 <h2 className="text-3xl font-bold mb-4 ">Log In</h2>
-               <p className='text-yellow-600 mb-1'>{error}</p>
+                <p className='text-yellow-600 mb-1'>{error}</p>
                 <form onSubmit={handleLogin}>
                     <div className="mb-4">
                         <label className="block text-gray-700 font-bold mb-2" htmlFor="email">
@@ -81,8 +107,9 @@ const Login = () => {
                     </button>
                 </form>
                 <p className='mt-2'>Don't Have An Account? <Link to="/register">Register Now!</Link></p>
-                <button className='mt-5 btn btn-outline rounded-md'><FaGoogle className='mr-2 text-green-700'></FaGoogle>Continue with Google</button><br />
-                <button className='mt-2 btn btn-outline rounded-md'><FaGithub className='mr-2 text-gray-700'></FaGithub>Continue with Github</button>
+                <button onClick={handleGoogleSignIn} className='mt-5 btn btn-outline rounded-md'><FaGoogle className='mr-2 text-green-700'></FaGoogle>Continue with Google</button><br />
+
+                <button onClick={handleGithubSignIn} className='mt-2 btn btn-outline rounded-md'><FaGithub className='mr-2 text-gray-700'></FaGithub>Continue with Github</button>
             </div>
             <div className="w-full lg:w-1/2 bg-gray-100 ">
                 <img src={img} alt="Steak" className="w-full h-full object-cover" />

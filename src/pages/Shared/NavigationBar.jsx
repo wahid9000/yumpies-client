@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
+import { FaSignInAlt, FaSignOutAlt, FaUserCircle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
 
@@ -42,14 +42,13 @@ const NavigationBar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-3">
-                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                {
+                    user&&
+                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                     <div className="w-10 rounded-full">
-                        <img src="https://images.unsplash.com/photo-1521038199265-bc482db0f923?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YW1lcmljYW4lMjBnaXJsfGVufDB8fDB8fA%3D%3D&w=1000&q=80" />
+                        <img src={user.photoURL} />
                     </div>
                 </label>
-                {
-                    user &&
-                    <p>{user.email}</p>
                 }
 
                 {

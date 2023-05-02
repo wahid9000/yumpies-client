@@ -3,11 +3,12 @@ import img from '../../assets/login.png'
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
+import { updateProfile } from 'firebase/auth';
 
 
 const Register = () => {
 
-    const {createUser, createUserWithGoogle} = useContext(AuthContext);
+    const {createUser} = useContext(AuthContext);
     const navigate = useNavigate();
 
     const [error, setError] = useState("");
@@ -20,7 +21,7 @@ const Register = () => {
         const email = event.target.email.value;
         const password = event.target.password.value;
         const name = event.target.name.value;
-        const photoUrl = event.target.photo.value;
+        const photoURL = event.target.photoURL.value;
         
         if(password.length < 6){
             setError("Provide a password having 6 characters or more.")
@@ -30,7 +31,9 @@ const Register = () => {
         .then(result => {
             const createdUser = result.user;
             console.log(createdUser);
+            event.target.reset();
             setSuccess("User has been created");
+            updateUserData(result.user, name, photoURL);
             navigate('/')
         })
         .catch(error => {
@@ -38,19 +41,20 @@ const Register = () => {
         })
     }
 
-    const handleGoogleSignUp = () => {
-        createUserWithGoogle()
-        .then(result => {
-            const user = result.user;
-            console.log(user);
-            navigate('/');
+    const updateUserData = (user, name, photoURL) => {
+        updateProfile(user, {
+            displayName: name,
+            photoURL: photoURL
+        })
+        .then(() => {
+
         })
         .catch(error => {
             console.log(error);
         })
     }
 
-
+    
 
     return (
         <div className="md:flex flex-wrap mt-10">
@@ -99,15 +103,15 @@ const Register = () => {
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2" htmlFor="photo">
+                        <label className="block text-gray-700 font-bold mb-2" htmlFor="photoURL">
                             Photo URL
                         </label>
                         <input
                             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="photo"
-                            type="photo"
+                            id="photoURL"
+                            type="photoURL"
                             placeholder="photo url"
-                            name="photo"
+                            name="photoURL"
                             required
                         />
                     </div>
@@ -117,9 +121,6 @@ const Register = () => {
                     <p className='text-yellow-600 mt-1'>{error}</p>
                 </form>
                 <p className='mt-2'>Already Have an Account? <Link to="/login">Login Now!</Link></p>
-
-                <button onClick={handleGoogleSignUp} className='mt-5 btn btn-outline rounded-md'><FaGoogle className='mr-2 text-green-700'></FaGoogle>Continue with Google</button>
-                <button className='mt-2 btn btn-outline rounded-md md:ml-2'><FaGithub className='mr-2 text-gray-700'></FaGithub>Continue with Github</button>
             </div>
             <div className="w-full lg:w-1/2 bg-gray-100">
                 <img src={img} alt="Steak" className="w-full h-full object-cover" />
