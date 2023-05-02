@@ -1,17 +1,34 @@
 import React from 'react';
-import { FaBriefcase } from 'react-icons/fa';
+import { FaBriefcase, FaCookie, FaThumbsUp } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const ChefsCards = ({ chef }) => {
-    const {id, name, image, year_of_experience, number_of_recipes, likes} = chef;
+    const { id, name, image, year_of_experience, number_of_recipes, likes } = chef;
     return (
         <div>
             <div className="card card-compact w-96 bg-base-100 shadow-xl">
-                <figure><img src={image} className='rounded-lg h-48' alt="chef" /></figure>
-                <div className="card-body">
-                    <h2 className="card-title">{name}</h2>
-                    <p className='flex items-center gap-2'><FaBriefcase></FaBriefcase>{year_of_experience}years</p>
-                    <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Buy Now</button>
+                <figure><img src={image} className='rounded-lg h-48 shadow-lg' alt="chef" /></figure>
+                <div className="card-body mt-2">
+                    <h2 className="text-2xl font-bold text-center">{name}</h2>
+                    <div className='flex justify-evenly mt-2'>
+                        <div className='flex items-center gap-1.5'>
+                          <FaBriefcase></FaBriefcase>
+                          <p>{year_of_experience}years</p>  
+                        </div>
+                        <div className='flex items-center gap-1.5'>
+                            <FaCookie></FaCookie>
+                            <p>{number_of_recipes}recipes</p>
+                        </div>
+                        <div className='flex items-center gap-1.5'>
+                            <FaThumbsUp></FaThumbsUp>
+                            <p>{likes}</p>
+                        </div>
+                        
+
+                    </div>
+
+                    <div className="card-actions justify-center mt-5">
+                        <Link to={`/chefs/${id}`}><button className="btn btn-warning rounded-md">View Recipes</button></Link>
                     </div>
                 </div>
             </div>
