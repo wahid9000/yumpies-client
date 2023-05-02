@@ -1,6 +1,7 @@
 import React from 'react';
 import Steak from '../assets/steak.webp';
 import { FaSignInAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const HeaderBanner = () => {
     return (
@@ -10,7 +11,7 @@ const HeaderBanner = () => {
                     Explore and Learn <br /> Best Recipes
                 </h1>
                 <p className=' my-5'>We have added amazing recipes from some of the top chefs <br /> in United States. Explore and Enjoy!</p>
-                <button className="mb-5 btn btn-warning rounded-md hover:text-white hover:bg-red-600">Get Started<FaSignInAlt className='ml-2'></FaSignInAlt></button>
+                <Link to="/login"><button className="mb-5 btn btn-warning rounded-md hover:text-white hover:bg-red-600">Get Started<FaSignInAlt className='ml-2'></FaSignInAlt></button></Link>
             </div>
             <div>
                 <img src={Steak} className='w-96  rounded-2xl' alt="" />

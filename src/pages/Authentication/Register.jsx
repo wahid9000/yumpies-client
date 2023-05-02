@@ -1,22 +1,49 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import img from '../../assets/login.png'
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../Provider/AuthProvider';
 
 
 const Register = () => {
 
-    const handleRegister = () => {
+    const {createUser} = useContext(AuthContext);
 
+    const [error, setError] = useState("");
+    const [success, setSuccess] = useState("");
+
+    const handleRegister = (event) => {
+        event.preventDefault();
+        setError("");
+        setSuccess("");
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+        const name = event.target.name.value;
+        const photoUrl = event.target.photo.value;
+        
+        if(password.length < 6){
+            setError("Provide a password having 6 characters or more.")
+        }
+
+        createUser(email, password)
+        .then(result => {
+            const createdUser = result.user;
+            console.log(createdUser);
+            setSuccess("User has been created");
+        })
+        .catch(error => {
+            console.log(error);
+        })
     }
 
 
 
     return (
-        <div className="flex flex-wrap mt-10">
+        <div className="md:flex flex-wrap mt-10">
 
             <div className="w-full lg:w-1/2 px-4 py-8 bg-white">
                 <h2 className="text-3xl font-bold mb-4 ">Register</h2>
+                <p>{success}</p>
                 <form onSubmit={handleRegister}>
                     <div className="mb-4">
                         <label className="block text-gray-700 font-bold mb-2" htmlFor="name">
@@ -73,10 +100,11 @@ const Register = () => {
                     <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                         Register
                     </button>
+                    <p className='text-yellow-600 mt-1'>{error}</p>
                 </form>
                 <p className='mt-2'>Already Have an Account? <Link to="/login">Login Now!</Link></p>
                 <button className='mt-5 btn btn-outline rounded-md'><FaGoogle className='mr-2 text-green-700'></FaGoogle>Continue with Google</button>
-                <button className='mt-2 btn btn-outline rounded-md ml-2'><FaGithub className='mr-2 text-gray-700'></FaGithub>Continue with Github</button>
+                <button className='mt-2 btn btn-outline rounded-md md:ml-2'><FaGithub className='mr-2 text-gray-700'></FaGithub>Continue with Github</button>
             </div>
             <div className="w-full lg:w-1/2 bg-gray-100">
                 <img src={img} alt="Steak" className="w-full h-full object-cover" />

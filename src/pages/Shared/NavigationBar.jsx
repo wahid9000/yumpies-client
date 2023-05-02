@@ -1,8 +1,25 @@
-import React from 'react';
-import { FaSignInAlt } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const NavigationBar = () => {
+
+    const {logOut, user} = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleLogOut = () => {
+        logOut()
+        .then(result => {
+            navigate('/login')
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
+
+
+
     return (
         <div className="navbar bg-transparent">
             <div className="navbar-start">
@@ -30,7 +47,21 @@ const NavigationBar = () => {
                         <img src="https://images.unsplash.com/photo-1521038199265-bc482db0f923?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YW1lcmljYW4lMjBnaXJsfGVufDB8fDB8fA%3D%3D&w=1000&q=80" />
                     </div>
                 </label>
-                <Link to="/login"><button className="btn btn-warning rounded-md hover:bg-red-600 hover:text-white">Login<FaSignInAlt className='ml-2'></FaSignInAlt></button></Link>
+                {
+                    user &&
+                    <p>{user.email}</p>
+                }
+
+                {
+                    user ?
+                    <Link><button onClick={handleLogOut} className="btn btn-warning rounded-md hover:bg-red-600 hover:text-white">Logout<FaSignOutAlt className='ml-2'></FaSignOutAlt></button></Link>
+                    :
+                    <Link to="/login"><button className="btn btn-warning rounded-md hover:bg-red-600 hover:text-white">Login<FaSignInAlt className='ml-2'></FaSignInAlt></button></Link>
+
+                }
+
+                
+                
             </div>
         </div>
     );
