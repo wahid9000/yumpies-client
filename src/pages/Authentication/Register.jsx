@@ -1,13 +1,14 @@
 import React, { useContext, useState } from 'react';
 import img from '../../assets/login.png'
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
 
 
 const Register = () => {
 
-    const {createUser} = useContext(AuthContext);
+    const {createUser, createUserWithGoogle} = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
@@ -30,6 +31,19 @@ const Register = () => {
             const createdUser = result.user;
             console.log(createdUser);
             setSuccess("User has been created");
+            navigate('/')
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
+
+    const handleGoogleSignUp = () => {
+        createUserWithGoogle()
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            navigate('/');
         })
         .catch(error => {
             console.log(error);
@@ -103,7 +117,8 @@ const Register = () => {
                     <p className='text-yellow-600 mt-1'>{error}</p>
                 </form>
                 <p className='mt-2'>Already Have an Account? <Link to="/login">Login Now!</Link></p>
-                <button className='mt-5 btn btn-outline rounded-md'><FaGoogle className='mr-2 text-green-700'></FaGoogle>Continue with Google</button>
+
+                <button onClick={handleGoogleSignUp} className='mt-5 btn btn-outline rounded-md'><FaGoogle className='mr-2 text-green-700'></FaGoogle>Continue with Google</button>
                 <button className='mt-2 btn btn-outline rounded-md md:ml-2'><FaGithub className='mr-2 text-gray-700'></FaGithub>Continue with Github</button>
             </div>
             <div className="w-full lg:w-1/2 bg-gray-100">
