@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaSignInAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const NavigationBar = () => {
     return (
@@ -10,19 +11,16 @@ const NavigationBar = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a>Item 1</a></li>
-                        <li><a>Item 2</a></li>
-                        <li><a>Item 3</a></li>
-
+                        <Link>Home</Link>
+                        <Link>Blogs</Link>
                     </ul>
                 </div>
                 <a className="btn btn-ghost normal-case text-xl">YumPies</a>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
-                    <li><a>Home</a></li>
-                    <li><a>About</a></li>
-                    <li><a>Blogs</a></li>
+                <ul className="menu menu-horizontal px-1 gap-5 ">
+                    <Link className='text-black' to='/'>Home</Link>
+                    <Link className='text-black'>Blogs</Link>
 
                 </ul>
             </div>
@@ -32,7 +30,7 @@ const NavigationBar = () => {
                         <img src="https://images.unsplash.com/photo-1521038199265-bc482db0f923?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YW1lcmljYW4lMjBnaXJsfGVufDB8fDB8fA%3D%3D&w=1000&q=80" />
                     </div>
                 </label>
-                <button className="btn btn-warning rounded-md hover:bg-red-600 hover:text-white">Login<FaSignInAlt className='ml-2'></FaSignInAlt></button>
+                <Link to="/login"><button className="btn btn-warning rounded-md hover:bg-red-600 hover:text-white">Login<FaSignInAlt className='ml-2'></FaSignInAlt></button></Link>
             </div>
         </div>
     );

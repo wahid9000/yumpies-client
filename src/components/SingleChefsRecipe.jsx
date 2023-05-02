@@ -2,11 +2,11 @@ import React from 'react';
 import { FaHeart, FaRegHeart, FaRegStar, FaShare, FaShareAlt, FaStar } from 'react-icons/fa';
 import Rating from 'react-rating';
 
-const SingleChefsRecipe = ({ recipe }) => {
-    const { ingredients, recipe_name, cooking_method, ratings } = recipe;
+const SingleChefsRecipe = ({ chefInfo }) => {
+    const { id, image, name, likes, number_of_recipes, year_of_experience, recipes } = chefInfo;
     return (
         <div>
-            <div className="card w-96 bg-base-100 shadow-xl border">
+            {/* <div className="card w-96 bg-base-100 shadow-xl border">
                 <div className="card-body">
                     <h2 className="card-title text-2xl font-bold">{recipe_name}</h2>
                     <h3 className='text-lg font-semibold'> Required Ingredients:</h3>
@@ -38,7 +38,7 @@ const SingleChefsRecipe = ({ recipe }) => {
 
 
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };
