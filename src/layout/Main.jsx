@@ -1,6 +1,5 @@
 import React from 'react';
 import NavigationBar from '../pages/Shared/NavigationBar';
-import Home from '../pages/Home/Home';
 import { Outlet } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import Footer from '../pages/Shared/Footer';

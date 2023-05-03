@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useRouteError } from 'react-router-dom';
 
 const ErrorPage = () => {
-    const {error, status} = useRouteError();
+    const {error} = useRouteError();
     return (
         <div className='px-0 md:px-60 mt-5 md:mt-20 text-center md:flex items-center'>
             <div>

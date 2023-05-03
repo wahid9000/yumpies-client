@@ -4,6 +4,7 @@ import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
+import { toast } from 'react-hot-toast';
 
 
 const Register = () => {
@@ -24,7 +25,13 @@ const Register = () => {
         const photoURL = event.target.photoURL.value;
         
         if(password.length < 6){
-            setError("Provide a password having 6 characters or more.")
+            setError(toast("Provide a password having 6 characters or more."))
+        }
+        else if(!email){
+            setError(toast("Email field cannot be empty"))
+        }
+        else if(!password){
+            setError(toast("Password field cannot be empty"))
         }
 
         createUser(email, password)
@@ -86,7 +93,7 @@ const Register = () => {
                             type="email"
                             name="email"
                             placeholder="email@email.com"
-                            required
+                            
                         />
                     </div>
                     <div className="mb-4">
@@ -118,7 +125,7 @@ const Register = () => {
                     <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                         Register
                     </button>
-                    <p className='text-yellow-600 mt-1'>{error}</p>
+                    
                 </form>
                 <p className='mt-2'>Already Have an Account? <Link to="/login">Login Now!</Link></p>
             </div>
