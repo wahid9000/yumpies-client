@@ -29,6 +29,7 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 setSuccess("User has been loggedIn");
+                event.target.reset();
                 console.log(loggedUser);
                 navigate(from, { replace: true });
 

@@ -5,11 +5,14 @@ import ChefsRecipe from "../pages/chefsRecipe/ChefsRecipe";
 import Login from "../pages/Authentication/Login";
 import Register from "../pages/Authentication/Register";
 import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../pages/Error/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+
+        errorElement: <ErrorPage></ErrorPage>,
 
         children: [
             {
