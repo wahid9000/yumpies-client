@@ -19,8 +19,6 @@ const NavigationBar = () => {
         })
     }
 
-
-
     return (
         <div className="navbar bg-transparent">
             <div className="navbar-start">
@@ -33,7 +31,7 @@ const NavigationBar = () => {
                         <ActiveLink to='/blogs'>Blogs</ActiveLink>
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">YumPies</a>
+                <Link to='/' className="btn btn-ghost normal-case text-xl">YumPies</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-5 ">

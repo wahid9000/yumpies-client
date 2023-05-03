@@ -7,7 +7,7 @@ const ChefsCards = ({ chef }) => {
     return (
         <div>
             <div className="card card-compact w-96 bg-base-100 shadow-xl">
-                <figure><img src={image} className='rounded-lg h-48 shadow-lg' alt="chef" /></figure>
+                <figure><img src={image} className='rounded-lg h-48 shadow-lg mt-5' alt="chef" /></figure>
                 <div className="card-body mt-2">
                     <h2 className="text-2xl font-bold text-center">{name}</h2>
                     <div className='flex justify-evenly mt-2'>
@@ -28,7 +28,7 @@ const ChefsCards = ({ chef }) => {
                     </div>
 
                     <div className="card-actions justify-center mt-5">
-                        <Link to={`/chefs/${id}`}><button className="btn btn-warning rounded-md">View Recipes</button></Link>
+                        <Link to={`/chefs/${id}`}><button className="btn btn-warning rounded-md hover:bg-red-600 hover:text-white">View Recipes</button></Link>
                     </div>
                 </div>
             </div>

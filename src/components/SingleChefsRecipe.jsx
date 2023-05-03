@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { FaHeart, FaRegHeart, FaRegStar, FaShare, FaShareAlt, FaStar } from 'react-icons/fa';
 import Rating from 'react-rating';
 
-const SingleChefsRecipe = ({ chefInfo }) => {
-    console.log(chefInfo);
-    const {chef_id,  recipe_name, ingredients, ratings, cooking_method } = chefInfo;
+const SingleChefsRecipe = ({ chefRecipe }) => {
+
+    const { chef_id, recipe_name, ingredients, ratings, cooking_method } = chefRecipe;
+
+    const [enable, setEnable] = useState(true);
+
+    const handleAddToFavourite = () => {
+        toast("Added To Favourites");
+        setEnable(false);
+    } 
+    
+
+
     return (
         <div>
             <div className="card w-96 bg-base-100 shadow-xl border">
@@ -32,9 +43,11 @@ const SingleChefsRecipe = ({ chefInfo }) => {
                             <span>{ratings}</span>
                         </div>
                         <div className='flex items-center gap-2'>
-                            <FaRegHeart></FaRegHeart>
                             <FaShareAlt></FaShareAlt>
                         </div>
+                    </div>
+                    <div className='text-center mt-5'>
+                        <button disabled={!enable} onClick={handleAddToFavourite} className="btn bg-red-700 rounded-lg text-white hover:bg-yellow-600"><FaHeart className='mr-1'></FaHeart>Add To Favourites</button>
                     </div>
 
 

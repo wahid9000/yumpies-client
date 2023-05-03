@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const HeaderBanner = () => {
     return (
-        <div className='md:flex justify-evenly px-16 mt-16 items-center'>
+        <div className='md:flex justify-evenly px-16 mt-8 items-center bg-slate-100 py-20 rounded-xl shadow-xl'>
             <div className='text-center md:text-left '>
                 <h1 className='text-5xl font-bold'>
                     Explore and Learn <br /> Best Recipes

@@ -7,6 +7,11 @@ import { AuthContext } from '../Provider/AuthProvider';
 const Login = () => {
     const { loginUser, createUserWithGoogle, createUserWithGithub } = useContext(AuthContext);
 
+    const [showPassword, setShowPassword] = useState(false);
+    const handleShowPassword = () => {
+        setShowPassword(!showPassword);
+    }
+
 
     const navigate = useNavigate()
     const location = useLocation();
@@ -94,14 +99,14 @@ const Login = () => {
                         <input
                             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id="password"
-                            type="password"
+                            type={showPassword ? 'text' : 'password'}
                             placeholder="********"
                             name="password"
                             required
                         />
                     </div>
                     <div className='my-3'>
-                        <p>Show Password</p>
+                    <p onClick={handleShowPassword} className='cursor-pointer'>{showPassword ? 'Hide Password' : 'Show Password'}</p>
                     </div>
                     <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                         Login

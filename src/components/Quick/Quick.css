@@ -1,5 +1,9 @@
 .background{
-    background-image: url(../../assets//usrecipe.jpg);
+    background-image: linear-gradient(
+        to right,
+        rgba(24, 12, 1, 0.5),
+        rgba(19, 86, 4, 0.5)
+      ),url(../../assets/chicken.jpg);
         background-repeat: no-repeat;
         background-size: cover;
  
