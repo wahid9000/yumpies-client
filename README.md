@@ -27,4 +27,4 @@ Things I have done in this project:
 * I have added active routed to show which route is active.
 * I have created a 404 page so that if the user moves to irrelavent page, 404 error will show.
 * I have added a blogs page with some question-answers and implemnted 'PDF Generation Functionality' using reactToPdf package.
-* I have implemnted 'Lazy Load' using lazy-load package.
+* I have implemnted 'Lazy Load' using react-lazy-load package.
