@@ -19,12 +19,12 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/chefs')
+                loader: () => fetch('https://yumpies-server.vercel.app/chefs')
             },
             {
                 path: '/chefs/:id',
                 element: <PrivateRoute><ChefsRecipe></ChefsRecipe></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/chefs/${params.id}`)
+                loader: ({params}) => fetch(`https://yumpies-server.vercel.app/chefs/${params.id}`)
             },
             {
                 path: '/blogs',

@@ -8,16 +8,16 @@ const ChefsCards = ({ chef }) => {
     return (
         <div>
             <div className="card card-compact w-96 bg-base-100 shadow-xl">
-                <LazyLoad height={200}>
-                    <figure><img src={image} className='rounded-lg h-48 shadow-lg mt-5' alt="chef" /></figure>
-                </LazyLoad>
-                
+
+               <LazyLoad once><figure><img src={image} className='rounded-lg h-48 shadow-lg mt-5' alt="chef" /></figure></LazyLoad> 
+
+
                 <div className="card-body mt-2">
                     <h2 className="text-2xl font-bold text-center">{name}</h2>
                     <div className='flex justify-evenly mt-2'>
                         <div className='flex items-center gap-1.5'>
-                          <FaBriefcase></FaBriefcase>
-                          <p>{year_of_experience}years</p>  
+                            <FaBriefcase></FaBriefcase>
+                            <p>{year_of_experience}years</p>
                         </div>
                         <div className='flex items-center gap-1.5'>
                             <FaCookie></FaCookie>
@@ -27,7 +27,7 @@ const ChefsCards = ({ chef }) => {
                             <FaThumbsUp></FaThumbsUp>
                             <p>{likes}</p>
                         </div>
-                        
+
 
                     </div>
 
@@ -39,5 +39,6 @@ const ChefsCards = ({ chef }) => {
         </div>
     );
 };
+
 
 export default ChefsCards;
