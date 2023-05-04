@@ -15,7 +15,7 @@ const Home = () => {
 
             <div className='mt-16 text-center'>
                 <h2 className='text-4xl mb-12 font-bold text-center'>We Love Our Chefs</h2>
-                <div className='justify-center grid md:grid-cols-2 lg:grid-cols-3 gap-5'>
+                <div className='justify-center grid md:grid-cols-2 lg:grid-cols-3 gap-3'>
                     {
                         chefsInfo.map(chef => <ChefsCards
 

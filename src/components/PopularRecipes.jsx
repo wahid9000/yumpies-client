@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const PopularRecipes = ({ recipe }) => {
     return (
-        <div className="card w-96 bg-base-100 shadow-xl image-full">
+        <div className="card w-80 md:96 bg-base-100 shadow-xl image-full">
             <figure><img src={recipe.image} alt="recipe" /></figure>
             <div className="card-body mt-[40%]">
                 <div>
