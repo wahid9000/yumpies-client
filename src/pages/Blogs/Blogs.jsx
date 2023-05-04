@@ -1,17 +1,10 @@
 import React from 'react';
 
+
 const Blogs = () => {
-    const ref = React.createRef();
+ 
     return (
         <div>
-
-            <ReactToPdf targetRef={ref} filename="div-blue.pdf">
-                {({ toPdf }) => (
-                    <button onClick={toPdf}>Generate pdf</button>
-                )}
-            </ReactToPdf>
-            <div style={{width: 500, height: 500, background: 'blue'}} ref={ref}/>
-
             <div>
                 <div className='py-12 bg-gray-100'>
                     <h2 className='font-bold text-center text-3xl'>Blogs</h2>

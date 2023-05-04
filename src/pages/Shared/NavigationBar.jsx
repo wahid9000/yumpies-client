@@ -3,6 +3,8 @@ import { FaSignInAlt, FaSignOutAlt, FaUserCircle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
 import ActiveLink from '../../components/ActiveLink/ActiveLink';
+import { Tooltip } from 'react-tooltip';
+
 
 const NavigationBar = () => {
 
@@ -44,11 +46,17 @@ const NavigationBar = () => {
                 {
                     user&&
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                    <div className="w-10 rounded-full">
-                        <img src={user.photoURL} />
+                    <div className="w-10 rounded-full" >
+                       <img src={user.photoURL} data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName}/>
+                        
                     </div>
+                    <Tooltip className='h-28' id="my-tooltip">
+                    
+                </Tooltip>
                 </label>
+                
                 }
+                
 
                 {
                     user ?

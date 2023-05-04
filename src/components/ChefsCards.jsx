@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaBriefcase, FaCookie, FaThumbsUp } from 'react-icons/fa';
+import LazyLoad from 'react-lazyload';
 import { Link } from 'react-router-dom';
 
 const ChefsCards = ({ chef }) => {
@@ -7,7 +8,10 @@ const ChefsCards = ({ chef }) => {
     return (
         <div>
             <div className="card card-compact w-96 bg-base-100 shadow-xl">
-                <figure><img src={image} className='rounded-lg h-48 shadow-lg mt-5' alt="chef" /></figure>
+                <LazyLoad height={200}>
+                    <figure><img src={image} className='rounded-lg h-48 shadow-lg mt-5' alt="chef" /></figure>
+                </LazyLoad>
+                
                 <div className="card-body mt-2">
                     <h2 className="text-2xl font-bold text-center">{name}</h2>
                     <div className='flex justify-evenly mt-2'>
