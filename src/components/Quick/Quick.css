@@ -1,7 +1,7 @@
 .background{
     background-image: linear-gradient(
         to right,
-        rgba(214, 18, 18, 0.5),
+        rgba(18, 1, 1, 0.5),
         rgba(8, 0, 7, 0.687)
       ),url(../../assets/chicken.jpg);
         background-repeat: no-repeat;

@@ -3,13 +3,14 @@ import './Quick.css'
 
 const Quick = () => {
     return (
-        <div className='bg-slate-400 text-center my-5 py-5 md:p-0 md:my-20 md:py-20 rounded-lg background'>
-            <div className='bg-white mx-10  md:mx-96 rounded-2xl'>
-                 <h2 className='text-3xl text-left pl-5 px-0 md:px-12 pt-10 pb-2'>50+ Recipes That Is Very <br></br>
-            Quick & Easy</h2>
-            <p className='text-left px-0 pl-5 md:px-12 pb-10'>Get the best ways to make your food more delicious, more fantastic!</p>
+        <div className="card lg:card-side bg-base-100 my-5 py-5 md:my-20 md:py-20 shadow-xl background">
+            <div className='card-body'>
+                <div className="mx-auto bg-white rounded-xl py-12 px-10">
+                    <h2 className="card-title text-3xl">50+ Recipes That Is Very <br /> Quick & Easy</h2>
+                    <p>Get the best ways to make your food more delicious,<br /> more fantastic!</p>
+                </div>
             </div>
-           
+
         </div>
     );
 };
