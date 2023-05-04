@@ -1,6 +1,7 @@
 import { useLoaderData } from 'react-router-dom';
-import SingleChefsRecipe from '../../components/SingleChefsRecipe';
+
 import { FaBriefcase, FaCookie, FaThumbsUp } from 'react-icons/fa';
+import SingleChefsRecipe from './SingleChefsRecipe';
 
 const ChefsRecipe = () => {
     const chefsInfo = useLoaderData();

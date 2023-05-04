@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import img from '../../assets/login.png'
-import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
@@ -39,7 +38,7 @@ const Register = () => {
             const createdUser = result.user;
             console.log(createdUser);
             event.target.reset();
-            setSuccess("User has been created");
+            setSuccess(toast("Thanks for your Registration. You can now explore our website."));
             updateUserData(result.user, name, photoURL);
             navigate('/')
         })
@@ -93,7 +92,7 @@ const Register = () => {
                             type="email"
                             name="email"
                             placeholder="email@email.com"
-                            
+                            required
                         />
                     </div>
                     <div className="mb-4">

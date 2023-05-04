@@ -3,6 +3,7 @@ import img from '../../assets/login.png'
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
     const { loginUser, createUserWithGoogle, createUserWithGithub } = useContext(AuthContext);
@@ -33,15 +34,15 @@ const Login = () => {
         loginUser(email, password)
             .then(result => {
                 const loggedUser = result.user;
-                setSuccess("User has been loggedIn");
+                setSuccess(toast("Login Success"));
                 event.target.reset();
-                console.log(loggedUser);
                 navigate(from, { replace: true });
 
             })
             .catch(error => {
                 console.log(error);
-                setError("Invalid Email or Password");
+                setError(toast("Invalid Email or Password"));
+              
             })
     }
 
@@ -77,7 +78,6 @@ const Login = () => {
 
             <div className="w-full lg:w-1/2 px-4 py-8 bg-white">
                 <h2 className="text-3xl font-bold mb-4 ">Log In</h2>
-                <p className='text-yellow-600 mb-1'>{error}</p>
                 <form onSubmit={handleLogin}>
                     <div className="mb-4">
                         <label className="block text-gray-700 font-bold mb-2" htmlFor="email">
