@@ -9,7 +9,7 @@ const ChefsCards = ({ chef }) => {
         <div>
             <div className="card card-compact w-96 bg-base-100 shadow-xl">
 
-               <LazyLoad once><figure><img src={image} className='rounded-lg h-48 shadow-lg mt-5' alt="chef" /></figure></LazyLoad> 
+               <LazyLoad><figure><img src={image} className='rounded-lg h-48 shadow-lg mt-5' alt="chef" /></figure></LazyLoad> 
 
 
                 <div className="card-body mt-2">

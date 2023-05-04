@@ -1,11 +1,25 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import ReactToPdf from 'react-to-pdf';
 
 
 const Blogs = () => {
- 
+    const pdfExportComponent = useRef(null);
+    const handlePdfExport = () => {
+        pdfExportComponent.current.save();
+    };
+
     return (
         <div>
-            <div>
+            <ReactToPdf targetRef={pdfExportComponent} scale={0.7}>
+                {({ toPdf }) => (
+
+                    <div className='pl-1 lg:pl-36 mt-12 absolute'>
+                        <button className='btn btn-outline  rounded-lg' onClick={toPdf}>Generate PDF</button>
+                    </div>
+
+                )}
+            </ReactToPdf>
+            <div ref={pdfExportComponent}>
                 <div className='py-12 bg-gray-100'>
                     <h2 className='font-bold text-center text-3xl'>Blogs</h2>
                 </div>
@@ -27,7 +41,7 @@ const Blogs = () => {
                 </div>
             </div>
 
-        </div>
+        </div >
     );
 };
 
