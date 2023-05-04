@@ -12,6 +12,7 @@ const Quick = () => {
             </div>
 
         </div>
+
     );
 };
 
