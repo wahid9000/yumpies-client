@@ -33,9 +33,10 @@ const Footer = () => {
 
                 <div>
                     <h2 className='text-2xl font-bold mb-3'>Sponsors</h2>
-                    <p>NetFlix</p>
+                    <p>Figma</p>
                     <p>Amazon</p>
                     <p>Google</p>
+                    <p>Telerama</p>
                 </div>
 
                 <div>

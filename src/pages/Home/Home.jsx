@@ -4,6 +4,7 @@ import { useLoaderData } from 'react-router-dom';
 import ChefsCards from '../../components/ChefsCards';
 import Quick from '../../components/Quick/Quick';
 import PopularRecipes from '../../components/PopularRecipes';
+import OurSponsors from '../../components/OurSponsors';
 
 
 const Home = () => {
@@ -42,6 +43,8 @@ const Home = () => {
                     }
                 </div>
             </div>
+
+            <OurSponsors></OurSponsors>
 
 
 
