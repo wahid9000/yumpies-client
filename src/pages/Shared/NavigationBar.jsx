@@ -8,17 +8,17 @@ import { Tooltip } from 'react-tooltip';
 
 const NavigationBar = () => {
 
-    const {logOut, user} = useContext(AuthContext);
+    const { logOut, user } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleLogOut = () => {
         logOut()
-        .then(result => {
-            navigate('/login')
-        })
-        .catch(error => {
-            console.log(error);
-        })
+            .then(result => {
+                navigate('/login')
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     return (
@@ -44,30 +44,33 @@ const NavigationBar = () => {
             </div>
             <div className="navbar-end gap-3">
                 {
-                    user&&
+                    user &&
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                    <div className="w-10 rounded-full" >
-                       <img src={user.photoURL} data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName}/>
-                        
-                    </div>
-                    <Tooltip className='h-28' id="my-tooltip">
-                    
-                </Tooltip>
-                </label>
-                
+                        <div className="w-10 rounded-full" >
+                            <Link to="/profile">
+                                <img src={user.photoURL} data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName} />
+                            </Link>
+
+
+                        </div>
+                        <Tooltip className='h-28' id="my-tooltip">
+
+                        </Tooltip>
+                    </label>
+
                 }
-                
+
 
                 {
                     user ?
-                    <Link><button onClick={handleLogOut} className="btn btn-warning rounded-md hover:bg-red-600 hover:text-white">Logout<FaSignOutAlt className='ml-2'></FaSignOutAlt></button></Link>
-                    :
-                    <Link to="/login"><button className="btn btn-warning rounded-md hover:bg-red-600 hover:text-white">Login<FaSignInAlt className='ml-2'></FaSignInAlt></button></Link>
+                        <Link><button onClick={handleLogOut} className="btn btn-warning rounded-md hover:bg-red-600 hover:text-white">Logout<FaSignOutAlt className='ml-2'></FaSignOutAlt></button></Link>
+                        :
+                        <Link to="/login"><button className="btn btn-warning rounded-md hover:bg-red-600 hover:text-white">Login<FaSignInAlt className='ml-2'></FaSignInAlt></button></Link>
 
                 }
 
-                
-                
+
+
             </div>
         </div>
     );
