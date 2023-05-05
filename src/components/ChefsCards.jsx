@@ -4,7 +4,7 @@ import LazyLoad from 'react-lazy-load';
 import { Link } from 'react-router-dom';
 
 const ChefsCards = ({ chef }) => {
-    const { id, name, image, year_of_experience, number_of_recipes, likes } = chef;
+    const { id, name, image, year_of_experience, number_of_recipes, likes, recipes } = chef;
     return (
         <div>
             <div className="card card-compact w-96 bg-base-100 shadow-xl">
@@ -19,11 +19,11 @@ const ChefsCards = ({ chef }) => {
                     <div className='flex justify-evenly mt-2'>
                         <div className='flex items-center gap-1.5'>
                             <FaBriefcase></FaBriefcase>
-                            <p>{year_of_experience}years</p>
+                            <p>{year_of_experience} years</p>
                         </div>
                         <div className='flex items-center gap-1.5'>
                             <FaCookie></FaCookie>
-                            <p>{number_of_recipes}recipes</p>
+                            <p>{recipes.length} recipes</p>
                         </div>
                         <div className='flex items-center gap-1.5'>
                             <FaThumbsUp></FaThumbsUp>

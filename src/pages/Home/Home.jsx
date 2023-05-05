@@ -5,6 +5,7 @@ import ChefsCards from '../../components/ChefsCards';
 import Quick from '../../components/Quick/Quick';
 import PopularRecipes from '../../components/PopularRecipes';
 import OurSponsors from '../../components/OurSponsors';
+import Subscribe from '../../components/Subscribe';
 
 
 const Home = () => {
@@ -44,6 +45,7 @@ const Home = () => {
                 </div>
             </div>
 
+            <Subscribe></Subscribe>
             <OurSponsors></OurSponsors>
 
 

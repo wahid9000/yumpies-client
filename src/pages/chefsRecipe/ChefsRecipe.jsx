@@ -5,6 +5,7 @@ import SingleChefsRecipe from './SingleChefsRecipe';
 
 const ChefsRecipe = () => {
     const chefsInfo = useLoaderData();
+
     return (
         <div>
 
@@ -22,7 +23,7 @@ const ChefsRecipe = () => {
                         </div>
                         <div className='flex items-center gap-1.5'>
                             <FaCookie></FaCookie>
-                            <p>{chefsInfo.number_of_recipes}recipes</p>
+                            <p>{chefsInfo.recipes.length}recipes</p>
                         </div>
                         <div className='flex items-center gap-1.5'>
                             <FaThumbsUp></FaThumbsUp>
