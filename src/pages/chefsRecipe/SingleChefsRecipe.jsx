@@ -2,18 +2,20 @@ import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { FaHeart, FaRegHeart, FaRegStar, FaShare, FaShareAlt, FaStar } from 'react-icons/fa';
 import Rating from 'react-rating';
+import { addToDb } from '../../utils/localStorage';
 
 const SingleChefsRecipe = ({ chefRecipe }) => {
 
-    const { chef_id, recipe_name, ingredients, ratings, cooking_method } = chefRecipe;
+    const { recipe_name, ingredients, ratings, cooking_method } = chefRecipe;
 
     const [enable, setEnable] = useState(true);
 
-    const handleAddToFavourite = () => {
+    const handleAddToFavourite = (id) => {
+        addToDb(id);
         toast("Added To Favourites");
         setEnable(false);
-    } 
-    
+    }
+
 
 
     return (
