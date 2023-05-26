@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { FaHeart, FaRegHeart, FaRegStar, FaShare, FaShareAlt, FaStar } from 'react-icons/fa';
+import { FaHeart,  FaRegStar, FaShareAlt, FaStar } from 'react-icons/fa';
 import Rating from 'react-rating';
+
 
 const SingleChefsRecipe = ({ chefRecipe }) => {
 
