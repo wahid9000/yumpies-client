@@ -1,9 +1,12 @@
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useLocation } from 'react-router-dom';
 
 import { FaBriefcase, FaCookie, FaThumbsUp } from 'react-icons/fa';
 import SingleChefsRecipe from './SingleChefsRecipe';
+import useScrollToTop from '../../hooks/useScrollToTop';
 
 const ChefsRecipe = () => {
+    const { pathName } = useLocation();
+    useScrollToTop(pathName);
     const chefsInfo = useLoaderData();
 
     return (
